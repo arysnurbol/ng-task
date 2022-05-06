@@ -1,0 +1,28 @@
+<div class="select-item-content">
+  <mat-form-field appearance="fill">
+    <mat-label>Select element</mat-label>
+    <mat-select [formControl]="nodeSelected">
+      <mat-option>-- None --</mat-option>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+          <button mat-icon-button disabled></button>
+          <mat-checkbox class="checklist-leaf-node"
+                        [checked]="checklistSelection.isSelected(node)"
+                        (change)="leafItemSelectionToggle(node)">{{node.name}}</mat-checkbox>
+        </mat-tree-node>
+
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+           {{node.name}}
+        </mat-tree-node>
+      </mat-tree>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button (click)="selectedNode()">Send selected button </button>
+</div>

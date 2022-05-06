@@ -1,0 +1,12 @@
+.select-item-content {
+  display: block;
+  max-width: 300px;
+  margin: 20px auto;
+  background-color: #eceff1;
+  padding: 48px;
+  border-radius: 16px;
+}
+
+.select-item-content mat-form-field {
+  width: 100%;
+}
